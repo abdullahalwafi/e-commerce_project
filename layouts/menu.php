@@ -54,7 +54,7 @@
             </div>
             <div class="col-auto d-none d-sm-block">
                 <a href="?page=keranjang" class="btn  btn-link text-dark"><i class="material-icons">shopping_cart</i>
-                    <p class="cart_counter_top">0</p>
+                    <p class="cart_counter_top"><?php if(isset($_SESSION['cart'])){echo count($_SESSION['cart']);}else{echo 0;} ?></p>
                 </a>
             </div>
             <div class="col-auto d-none d-sm-block">

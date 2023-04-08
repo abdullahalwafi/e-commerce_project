@@ -10,7 +10,7 @@ function hapusData($id, $nama_tabel, $koneksi)
     } else {
         return false;
     }
-    return true; 
+    return true;
 }
 // Fungsi untuk mengunggah file gambar
 function uploadImageMulti($file)
@@ -80,5 +80,20 @@ function uploadImage($file)
         return $target_file;
     } else {
         die("Gagal mengunggah file gambar.");
+    }
+}
+function AddCart($id, $qty)
+{
+    $cart = array(
+        'id' => $id,
+        'qty' => $qty
+    );
+
+    if (isset($_SESSION['cart'])) {
+        $cartSession = $_SESSION['cart'];
+        $cartSession[$id] = $cart;
+        $_SESSION['cart'] = $cartSession;
+    } else {
+        $_SESSION['cart'] = array($id => $cart);
     }
 }

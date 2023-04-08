@@ -159,7 +159,7 @@ if (isset($_GET['slug'])) {
                             <a href="?page=produk&slug=<?= $data['slug'] ?>" class="text-dark mb-1 mt-2 h6 tulisan-card"><?= $data['merk'] ?> | <?= $data['nama_motor'] ?></a>
                             <h5 class="text-success font-weight-normal mb-0">
                                 <div class="newPrice">
-                                    Rp. <?= number_format($data['harga']); ?></div>
+                                    Rp. <?= number_format($data['harga'], 0, ',', '.');?></div>
                             </h5>
                             <p class="text-secondary small text-mute mb-0">Deskripsi : </p>
                             <small class="text-secondary small text-mute mb-0"><?= substr($data['deskripsi'], 0, 50) ?></small>

@@ -60,7 +60,6 @@ include_once('layouts/header.php') ?>
 	<!-- page level script -->
 	<script type="text/javascript" src="assets/vendor/select2/select2.min.js"></script>
 	<?php
-	echo $_SESSION['nama'];
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$email = $_POST['email'];
 		$password = $_POST['password'];

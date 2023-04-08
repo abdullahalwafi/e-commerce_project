@@ -58,7 +58,7 @@
                     $qeury = $koneksi->prepare("SELECT * FROM merk LIMIT 10");
                     $qeury->execute();
                     foreach ($qeury as $data) { ?>
-                        <a href="merk/<?= $data['slug'] ?>.html">
+                        <a href="?page=merk&slug=<?= $data['slug'] ?>">
                             <div class="item">
                                 <img src="admin/<?= $data['img'] ?>" alt="<?= $data['merk'] ?>">
                                 <p><?= $data['merk'] ?></p>
@@ -130,69 +130,73 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <h5 class="subtitle mt-0 text-center" id="exampleModalCenterTitle">Tambah Ke Troli</h5>
-                <div class="modal-body">
+<?php
+if ($page == 'produk') {
+    if (isset($_GET['slug'])) {
+        $qeury = $koneksi->prepare("SELECT motor.*, merk.merk, merk.slug AS slugs FROM motor INNER JOIN merk ON merk.id = motor.merk_id WHERE motor.slug = :slug");
+        $qeury->bindParam(":slug", $_GET['slug']);
+        $qeury->execute();
+        $data = $qeury->fetch();
 
-                    <div class="row">
-                        <div class="col-2 pl-0">
-                            <figure class="product-image h-auto"><img src="https://adila.id/admin/uploads/" alt="" class="vm"></figure>
-                        </div>
-                        <div class="col px-0">
-                            <span class="text-dark mb-1 h6 d-block">Janna Tea Cold Pilihan minuman santai </span>
+        $id = $data['id'];
+        $qeury2 = $koneksi->prepare("SELECT * FROM imgmotor WHERE motor_id = '$id' LIMIT 1");
+        $qeury2->execute();
+        $data2 = $qeury2->fetch();
+?>
+        <div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h5 class="subtitle mt-0 text-center" id="exampleModalCenterTitle">Tambah Ke Troli</h5>
+                        <div class="modal-body">
 
-                            <h5>
-                                <span id="hargacetak" class="text-success font-weight-normal mb-0">
-                                    Rp 115.000 </span>
-                            </h5>
+                            <div class="row">
+                                <div class="col-2 pl-0">
+                                    <figure class="product-image h-auto"><img src="admin/<?= $data2['img'] ?>" class="vm"></figure>
+                                </div>
+                                <div class="col px-0">
+                                    <span class="text-dark mb-1 h6 d-block"><?= $data['merk'] ?> | <?= $data['nama_motor'] ?></span>
+
+                                    <h5>
+                                        <span class="text-success font-weight-normal mb-0">
+                                            Rp <?= number_format($data['harga'], 0, ',', '.'); ?> </span>
+                                    </h5>
+                                </div>
+                                <div class="text-center">
+                                    <div class="btn btn-sm btn-warning shadow btn-rounded mt-3 mb-3" id="stokrefresh">STOK: <?= $data['stok'] ?> </div>
+                                </div>
+
+                            </div>
+
+                            <form method="post">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-4 text-center">
+                                            <span class="text-dark mb-1 h6 d-block">Jumlah: </span>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="input-group mb-3">
+                                                <input class="w-45 num-product" type="number" min="1" name="qty" value="1" max="<?= $data['stok'] ?>" required>
+                                                <input type="hidden" name="id" value="<?= $data['id'] ?>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
                         <div class="text-center">
-                            <div class="btn btn-sm btn-warning shadow btn-rounded mt-3 mb-3" id="stokrefresh">STOK: 251 </div>
+                            <input type="submit" class="btn btn-lg btn-default shadow btn-rounded mt-3" name="cart" value="Tambah Ke Keranjang">
                         </div>
+                        </form>
+
+
 
                     </div>
 
-                    <form id="keranjang">
-                        <input type="hidden" name="csrf_test_name" value="2c8c1948d1da6b04b1250945f8e34854" style="display: none">
-                        <input type="hidden" name="idproduk" value="67" />
-                        <input type="hidden" id="variasi" name="variasi" value="0" />
-                        <input type="hidden" id="harga" name="harga" value="115000" />
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-4 text-center">
-                                    <span class="text-dark mb-1 h6 d-block">Jumlah: </span>
-                                </div>
-                                <div class="col-6">
-                                    <div class="input-group mb-3">
-                                        <input class="w-45 num-product" type="number" min="1" name="jumlah" value="1" id="jumlahorder" max="251" required>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-12">
-                            <div class="form-group mb-0 float-label">
-                                <input type="text" class="form-control" name="keterangan" value="">
-                                <label class="form-control-label">Keterangan</label>
-                            </div>
-                        </div>
                 </div>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-lg btn-default shadow btn-rounded mt-3"><i class="material-icons mb-18 mr-2">shopping_cart</i>Tambah Ke Keranjang</button>
-                    <span id="proses" class="cl1" style="display:none;"><b><i class="fa fa-spin fa-spinner"></i> Memproses pesanan</b></span>
-                </div>
-                </form>
-
-
-
             </div>
-
         </div>
-    </div>
-</div>
+<?php }
+} ?>
 <div class="modal fade " id="colorscheme" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content ">

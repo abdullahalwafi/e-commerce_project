@@ -270,7 +270,7 @@
                                         <td><?= $no++ ?></td>
                                         <td><?= $data['nama_motor'] ?></td>
                                         <td><?= $data['cc'] ?></td>
-                                        <td><?= number_format($data['harga']) ?></td>
+                                        <td><?= number_format($data['harga'], 0, ',', '.'); ?></td>
                                         <td><?= $data['merk'] ?></td>
                                         <td><?= $data['stok'] ?></td>
                                         <td>

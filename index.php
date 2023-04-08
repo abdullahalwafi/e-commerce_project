@@ -12,3 +12,8 @@ if (isset($_REQUEST['page'])) {
 }
 
 include_once('layouts/footer.php');
+require_once('admin/model.php');
+if (isset($_POST['cart'])) {
+	AddCart($_POST['id'], $_POST['qty']);
+	echo '<meta http-equiv="refresh" content="0; url=?page=keranjang" />';
+}

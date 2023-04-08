@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container">
     <div class="full swiper-container swiper-banner">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
@@ -11,10 +11,14 @@
                     <div class="swiper-zoom-container"><img src="assets/images/promo2.jpeg" alt="promo"></div>
                 </a>
             </div>
-
             <div class="swiper-slide">
                 <a href="#">
                     <div class="swiper-zoom-container"><img src="assets/images/promo3.jpeg" alt="promo"></div>
+                </a>
+            </div>
+            <div class="swiper-slide">
+                <a href="#">
+                    <div class="swiper-zoom-container"><img src="assets/images/promo5.png" alt="promo"></div>
                 </a>
             </div>
 
@@ -42,10 +46,10 @@
                         <div class="card shadow-sm border-0">
                             <div class="card-body">
                                 <div class="row no-gutters h-100">
-                                    <a href="?page=kategori&slug=<?= $data['slug'] ?>"><img src="admin/<?= $data['img'] ?>" alt="<?= $data['merk'] ?>" class="small-slide-right"></a>
+                                    <a href="?page=merk&slug=<?= $data['slug'] ?>"><img src="admin/<?= $data['img'] ?>" alt="<?= $data['merk'] ?>" class="small-slide-right"></a>
                                     <div class="col-8">
                                         <button class="btn btn-sm btn-link p-0"><i class="material-icons md-18">favorite_outline</i></button>
-                                        <a href="?page=kategori&slug=<?= $data['slug'] ?>" class="text-dark mb-1 mt-2 h6 d-block"><?= $data['merk'] ?> </a>
+                                        <a href="?page=merk&slug=<?= $data['slug'] ?>" class="text-dark mb-1 mt-2 h6 d-block"><?= $data['merk'] ?> </a>
                                         <p class="text-secondary small">Merk Kendaraan</p>
                                     </div>
                                 </div>
@@ -92,7 +96,7 @@
                         <a href="?page=produk&slug=<?= $data['slug'] ?>" class="text-dark mb-1 mt-2 h6 tulisan-card"><?= $data['merk'] ?> | <?= $data['nama_motor'] ?></a>
                         <h5 class="text-success font-weight-normal mb-0">
                             <div class="newPrice">
-                                Rp. <?= number_format($data['harga']); ?></div>
+                                Rp. <?= number_format($data['harga'], 0, ',', '.'); ?></div>
                         </h5>
                         <p class="text-secondary small text-mute mb-0">Deskripsi : </p>
                         <small class="text-secondary small text-mute mb-0"><?= substr($data['deskripsi'], 0, 50) ?></small>
