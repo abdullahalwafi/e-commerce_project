@@ -1,5 +1,4 @@
 <?php
-session_start();
 if (isset($_SESSION['nama'])) {
 	if ($_SESSION['role'] != 'admin') {
 		$role = "?page=home";
@@ -7,8 +6,7 @@ if (isset($_SESSION['nama'])) {
 		$role = $_SESSION['role'];
 	}
 	header("location:$role");
-}
-include_once('layouts/header.php') ?>
+} ?>
 <div class="container">
 	<div class="row no-gutters vh-100 proh bg-template">
 		<div class="col align-self-center px-3 text-center" id="load">
@@ -36,7 +34,7 @@ include_once('layouts/header.php') ?>
 						<input type="submit" class="btn btn-sm btn-default btn-rounded shadow mb-2" value="Log in" name="login" style="width: 100%;">
 					</div>
 					<div class="col-12">
-						<a href="reset.php" class="btn btn-sm btn-default btn-rounded shadow" style="width: 100%;"><span>lupa password</span></a>
+						<p class="text-center m-t-15">Belum punya akun? <a href="?page=daftar">Daftar</a></p>
 					</div>
 				</div>
 			</form>
@@ -64,16 +62,17 @@ include_once('layouts/header.php') ?>
 		$email = $_POST['email'];
 		$password = $_POST['password'];
 
-		$stmt = $koneksi->prepare("SELECT * FROM user WHERE email = ?");
+		$stmt = $koneksi->prepare("SELECT * FROM user WHERE email = ? and status = 'aktif'");
 		$stmt->execute([$email]);
 		$user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 		if ($user && password_verify($password, $user['password'])) {
 			$_SESSION['nama'] = $user['nama'];
+			$_SESSION['iduser'] = $user['id'];
 			$_SESSION['email'] = $user['email'];
 			$_SESSION['role'] = $user['role'];
 			if ($user['role'] != 'admin') {
-				$role = "index.php";
+				$role = "./?page=home";
 			} else {
 				$role = $user['role'];
 			}
@@ -86,7 +85,7 @@ include_once('layouts/header.php') ?>
 					title: 'Error!',
 					icon: 'error',
 					confirmButtonText: 'oke',
-					html: "<span class='text-center'>Email atau password anda salah</span><br><table class='table table-bordered'><tr><td>email</td><td>password</td></tr><tr><td>admin@admin.com</td><td>admin123</td></tr></table>"
+					html: "<span class='text-center'>Data yang anda masukan salah atau akun ada belum terverifikasi</span><br><table class='table table-bordered'><tr><td>email</td><td>password</td></tr><tr><td>admin@admin.com</td><td>admin123</td></tr></table>"
 				});
 			</script>
 	<?php

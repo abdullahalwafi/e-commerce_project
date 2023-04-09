@@ -3,7 +3,7 @@ session_start();
 require_once('koneksi.php');
 require_once('model.php');
 if ($_SESSION['nama'] == "") {
-    header("location:../login.php");
+    header("location:../?page=login");
 } else {
     if ($_SESSION['role'] != 'admin') {
         header("location:../?page=home");

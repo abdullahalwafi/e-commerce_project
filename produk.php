@@ -77,7 +77,14 @@ if (isset($_GET['slug'])) {
                     </div>
                     <div class="row">
                         <div class="mr-3">
-                            <button data-toggle="modal" data-target="#cart" type="button" class="btn btn-lg btn-default shadow btn-rounded flash"><i class="material-icons">shopping_cart</i> + keranjang </button>
+                            <?php
+                            if (isset($_SESSION['nama'])) { ?>
+                                <button data-toggle="modal" data-target="#cart" type="button" class="btn btn-lg btn-default shadow btn-rounded flash"><i class="material-icons">shopping_cart</i> + keranjang </button>
+                            <?php
+                            } else {
+                                echo '<a href="?page=login" class="btn btn-lg btn-default shadow btn-rounded flash"><i class="material-icons">shopping_cart</i> + keranjang </a>';
+                            }
+                            ?>
                         </div>
                         <div class="mr-3">
                             <a href="https://wa.me/+6285162615128/?text=Halo,%20saya%20ingin%20membeli%20produk%20*<?= $data['merk'] ?> | <?= $data['nama_motor'] ?> *%20apakah%20masih%20tersedia?" target="_blank"> <button class="btn btn-lg btn-success shadow btn-rounded"><i class="fa fa-whatsapp"></i> chat WA</button></a>
@@ -117,7 +124,7 @@ if (isset($_GET['slug'])) {
                         <div class="card cardproduk shadow-sm border-0 mb-4">
                             <div class="produklist">
                                 <span class="badge badge-warning bdg-1">0</span>
-                                <i class="stars" data-rating="0" data-num-stars="5"></i>
+                                <i class="stars" data-rating="5" data-num-stars="5"></i>
                                 <figure class="product-image"><a href="?page=produk&slug=<?= $data3['slug'] ?>"><img src="admin/<?= $data4['img'] ?>" alt="<?= $data3['merk'] ?> | <?= $data3['nama_motor'] ?>"></a></figure>
                                 <div class="badge badge-danger float-right mt-1"></div>
                                 <a href="?page=produk&slug=<?= $data3['slug'] ?>" class="text-dark mb-1 mt-2 h6 tulisan-card"><?= $data3['merk'] ?> | <?= $data3['nama_motor'] ?></a>
@@ -159,7 +166,7 @@ if (isset($_GET['slug'])) {
                             <a href="?page=produk&slug=<?= $data['slug'] ?>" class="text-dark mb-1 mt-2 h6 tulisan-card"><?= $data['merk'] ?> | <?= $data['nama_motor'] ?></a>
                             <h5 class="text-success font-weight-normal mb-0">
                                 <div class="newPrice">
-                                    Rp. <?= number_format($data['harga'], 0, ',', '.');?></div>
+                                    Rp. <?= number_format($data['harga'], 0, ',', '.'); ?></div>
                             </h5>
                             <p class="text-secondary small text-mute mb-0">Deskripsi : </p>
                             <small class="text-secondary small text-mute mb-0"><?= substr($data['deskripsi'], 0, 50) ?></small>

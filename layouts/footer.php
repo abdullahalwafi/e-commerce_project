@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="text-center">
-                <span> Copyright © 2023 All rights reserved | ADILA ID</span>
+                <span> Copyright © <?= date("Y") ?> All rights reserved | Abdullah AL Wafi</span>
             </div>
         </div>
     </div>

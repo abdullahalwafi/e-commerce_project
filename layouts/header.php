@@ -5,43 +5,43 @@ require_once('admin/koneksi.php'); ?>
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
 <head>
-    <title>Adila ID | Jasa Digital Terpercaya</title>
+    <title>E-Commerce Penjualan Motor Terpercaya</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover, user-scalable=no">
-    <meta name="description" content="adila.id">
+    <meta name="description" content="E-Commerce">
     <link rel="shortcut icon" href="admin/assets/img/favicon-20210912000035.png" type="image/x-icon" />
 
     <!-- Open Graph data -->
     <meta property="fb:app_id" content="655968634437471">
-    <meta property="og:title" content="Adila ID | Jasa Digital Terpercaya" />
+    <meta property="og:title" content="E-Commerce Penjualan Motor Terpercaya" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="index.html" />
     <meta property="og:image" itemprop="image" content="admin/assets/img/favicon-20210912000035.png" />
-    <meta property="og:description" content="Aplikasi toko online Adila ID | Jasa Digital Terpercaya" />
-    <meta property="og:site_name" content="Adila ID | Jasa Digital Terpercaya" />
+    <meta property="og:description" content="Aplikasi toko online E-Commerce Penjualan Motor Terpercaya" />
+    <meta property="og:site_name" content="E-Commerce Penjualan Motor Terpercaya" />
 
     <!-- Material design icons CSS -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="admin/assets/img/favicon-20210912000035.png" />
     <meta name="google-site-verification" content="euCIiGMy1gz2DDkI46MsK_Sx6FVbU64akhDl_LBrRxc" />
-    <meta name="description" content="Jasa digital marketing terpercaya | Jasa Pembuatan Aplikasi Terpercaya | Jual Beli Source Code" />
+    <meta name="description" content="E-Commerce Penjualan Motor Terpercaya" />
     <meta name="yandex-verification" content="0ef7681e68478029" />
     <meta name="author" content="adild.id">
 
     <!--  Social tags      -->
-    <meta name="keywords" content="Aplikasi toko online Adila ID | Jasa Digital Terpercaya">
-    <meta name="description" content="Aplikasi toko online Adila ID | Jasa Digital Terpercaya">
+    <meta name="keywords" content="Aplikasi toko online E-Commerce Penjualan Motor Terpercaya">
+    <meta name="description" content="Aplikasi toko online E-Commerce Penjualan Motor Terpercaya">
     <!-- Schema.org markup for Google+ -->
-    <meta itemprop="name" content="Adila ID | Jasa Digital Terpercaya">
-    <meta itemprop="description" content="Aplikasi toko online Adila ID | Jasa Digital Terpercaya">
+    <meta itemprop="name" content="E-Commerce Penjualan Motor Terpercaya">
+    <meta itemprop="description" content="Aplikasi toko online E-Commerce Penjualan Motor Terpercaya">
     <meta itemprop="image" content="admin/assets/img/favicon-20210912000035.png">
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="product">
-    <meta name="twitter:site" content="adila.id">
-    <meta name="twitter:title" content="Adila ID | Jasa Digital Terpercaya">
-    <meta name="twitter:description" content="Aplikasi toko online Adila ID | Jasa Digital Terpercaya">
-    <meta name="twitter:creator" content="adila.id">
+    <meta name="twitter:site" content="E-Commerce">
+    <meta name="twitter:title" content="E-Commerce Penjualan Motor Terpercaya">
+    <meta name="twitter:description" content="Aplikasi toko online E-Commerce Penjualan Motor Terpercaya">
+    <meta name="twitter:creator" content="E-Commerce">
     <meta name="twitter:image" content="admin/assets/img/favicon-20210912000035.png">
 
     <link rel="stylesheet" href="assets/css/material-icons.css">

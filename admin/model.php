@@ -97,3 +97,12 @@ function AddCart($id, $qty)
         $_SESSION['cart'] = array($id => $cart);
     }
 }
+function generateNumber($panjang)
+{
+    $otp = "";
+    $digits = "0123456789";
+    for ($i = 0; $i < $panjang; $i++) {
+        $otp .= $digits[rand(0, 9)];
+    }
+    return $otp;
+}
