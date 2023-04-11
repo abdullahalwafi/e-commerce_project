@@ -1,3 +1,47 @@
+<div class="footer d-block d-sm-none">
+    <div class="no-gutters">
+        <div class="col-auto mx-auto">
+            <div class="row no-gutters justify-content-center">
+                <div class="col-auto">
+                    <a href="?page=home" class="btn btn-link-default ">
+                        <i class="material-icons">home</i>
+                    </a>
+                </div>
+                <div class="col-auto">
+                    <p data-toggle="modal" data-target="#modalMoreCategory" class="btn btn-link-default">
+                        <i class="material-icons">view_module</i>
+                    </p>
+                </div>
+                <div class="col-auto">
+
+                    <a href="?page=keranjang" class="btn btn-default shadow centerbutton">
+                        <i class="material-icons">shopping_cart</i>
+                        <span class="cart_counter"><?php if (isset($_SESSION['cart'])) {
+                                                        echo count($_SESSION['cart']);
+                                                    } else {
+                                                        echo 0;
+                                                    } ?></span>
+                    </a>
+                </div>
+                <div class="col-auto">
+                    <a href="?page=produk" class="btn btn-link-default">
+                        <i class="material-icons">local_mall</i>
+                    </a>
+                </div>
+                <div class="col-auto">
+
+                    <?php if (isset($_SESSION['nama'])) { ?>
+                        <a href="?page=logout" onclick="if(!confirm('Anda yakin logout?')) {return false}" class="btn btn-link-default active">
+                        <?php } else { ?>
+                            <a href="?page=login" class="btn btn-link-default active">
+                            <?php } ?>
+                            <i class="material-icons">account_circle</i>
+                            </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container-fluid bg-success text-white my-3">
     <div class="row">
         <div class="container">
@@ -250,40 +294,46 @@ if ($page == 'produk') {
 <script src="assets/js/main.js"></script>
 <script src="assets/js/jquery.countdown.min.js"></script>
 
-<div class="modal fade" id="share" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-sm modal-dialog-end" role="document">
-        <div class="modal-content text-center">
-            <input type="text" class="url_public_id" id="myInput" value="https://adila.id/produk/Janna-Tea-Cold-Pilihan-minuman-santai--103315" readonly></input>
-            <div class="modal-body">
-                <h6 class="subtitle mt-0">Bagikan</h6>
-                <span id="myTooltip"></span>
 
-                <div class="row">
-                    <div class="col-12">
-                        <div class="text-center">
-                            <a href="https://www.facebook.com/sharer.php?u=https://adila.id/produk/Janna-Tea-Cold-Pilihan-minuman-santai--103315" target="_blank" title="Facebook" class="btn btn-default button-rounded-36 shadow-sm"><i class=" fab fa-facebook-f"></i></a>
-                            <a href="https://twitter.com/share?url=https://adila.id/produk/Janna-Tea-Cold-Pilihan-minuman-santai--103315" target="_blank" title="Twitter" class="btn btn-default button-rounded-36 shadow-sm"><i class=" fab fa-twitter"></i></a>
-                            <a href="whatsapp://send?text=https://adila.id/produk/Janna-Tea-Cold-Pilihan-minuman-santai--103315" target="_blank" title="Whatsapp" class="btn btn-default button-rounded-36 shadow-sm"><i class=" fab fa-whatsapp"></i></a>
-                            <button type="button" onclick="copyToClipboard()" title="copy link" class="btn btn-default button-rounded-36 shadow-sm"><i class=" fa fa-copy"></i></button>
-                            <style>
-                                .url_public_id {
-                                    border: #fff;
-                                    color: #fff;
-                                    margin-top: 18px;
-                                    margin-left: 31px;
-                                    position: absolute;
-                                    z-index: -1;
-                                }
-                            </style>
+<?php if ($page == 'produk') {
+    if (isset($_GET['slug'])) {
+        $urlshare = rawurlencode($url . "?page=produk&slug=" . $_GET['slug']);
+?>
+        <div class="modal fade" id="share" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-sm modal-dialog-end" role="document">
+                <div class="modal-content text-center">
+                    <input type="text" class="url_public_id" id="myInput" value="<?= $urlshare ?>" readonly></input>
+                    <div class="modal-body">
+                        <h6 class="subtitle mt-0">Bagikan</h6>
+                        <span id="myTooltip"></span>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="text-center">
+                                    <a href="https://www.facebook.com/sharer.php?u=<?= $urlshare ?>" target="_blank" title="Facebook" class="btn btn-default button-rounded-36 shadow-sm"><i class=" fab fa-facebook-f"></i></a>
+                                    <a href="https://twitter.com/share?url=<?= $urlshare ?>" target="_blank" title="Twitter" class="btn btn-default button-rounded-36 shadow-sm"><i class=" fab fa-twitter"></i></a>
+                                    <a href="whatsapp://send?text=<?= $urlshare ?>" target="_blank" title="Whatsapp" class="btn btn-default button-rounded-36 shadow-sm"><i class=" fab fa-whatsapp"></i></a>
+                                    <button type="button" onclick="copyToClipboard()" title="copy link" class="btn btn-default button-rounded-36 shadow-sm"><i class=" fa fa-copy"></i></button>
+                                    <style>
+                                        .url_public_id {
+                                            border: #fff;
+                                            color: #fff;
+                                            margin-top: 18px;
+                                            margin-left: 31px;
+                                            position: absolute;
+                                            z-index: -1;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
-
             </div>
         </div>
-    </div>
-</div>
-<?php if ($page == 'produk') { ?>
+    <?php } ?>
+
     <script>
         $(window).on('load', function() {
             var swiper = new Swiper('.swiper-container', {

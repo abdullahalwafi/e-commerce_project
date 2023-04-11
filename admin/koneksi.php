@@ -10,4 +10,4 @@ try {
 } catch (PDOException $e) {
     echo "database tidak terhubung : " . $e->getMessage();
 }
-$url = "https://adila.id/";
+$url = "http://localhost/";

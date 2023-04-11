@@ -19,7 +19,12 @@
                     echo '<a href="?page=login" class="list-group-item list-group-item-action active">Pesanan<i class="material-icons float-right">chevron_right</i></a>>';
                 } ?>
                 <p data-toggle="modal" data-target="#colorscheme" class="list-group-item list-group-item-action active">Setting Warna<i class="material-icons float-right">chevron_right</i></p>
-                <a href="?page=login" class="list-group-item list-group-item-action mt-4 active">Login<i class="material-icons float-right">chevron_right</i></a>
+                <?php if (isset($_SESSION['nama'])) {
+                    echo '<a href="?page=logout" onclick="if(!confirm("Anda yakin logout?")) {return false}" class="list-group-item list-group-item-action mt-4 active">Logout<i class="material-icons float-right">chevron_right</i></a>';
+                } else {
+                    echo '<a href="?page=login" class="list-group-item list-group-item-action mt-4 active">Login<i class="material-icons float-right">chevron_right</i></a>';
+                }
+                ?>
             </div>
         </div>
     </div>
